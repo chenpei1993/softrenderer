@@ -10,10 +10,16 @@ class DrawLine{
             let pixelA = scene.project(v1, transformMatrix);
             let pixelB = scene.project(v2, transformMatrix);
             let pixelC = scene.project(v3, transformMatrix);
-            this.drawLine(pixelA, pixelB);
-            this.drawLine(pixelA, pixelC);
-            this.drawLine(pixelB, pixelC);
+            if(this.isCcw(pixelA, pixelB, pixelC)){
+                this.drawLine(pixelA, pixelB);
+                this.drawLine(pixelA, pixelC);
+                this.drawLine(pixelB, pixelC);
+            }
         }
+    }
+
+    isCcw(v0, v1, v2) {
+        return (v1.x - v0.x) * (v2.y - v0.y) - (v1.y - v0.y) * (v2.x - v0.x) >= 0;
     }
 
     drawLine(p0, p1) {

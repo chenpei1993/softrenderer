@@ -9,8 +9,15 @@ class DrawTriangle{
             let pixelA = new Pixel(this.scene.project(v1, transformMatrix), o.colors[o.indices[index]]);
             let pixelB = new Pixel(this.scene.project(v2, transformMatrix), o.colors[o.indices[index + 1]]);
             let pixelC = new Pixel(this.scene.project(v3, transformMatrix), o.colors[o.indices[index + 2]]);
-            this.drawTriangle(pixelA, pixelB, pixelC);
+            if(this.isCcw(pixelA.vector, pixelB.vector, pixelC.vector)){
+                this.drawTriangle(pixelA, pixelB, pixelC);
+            }
+
         }
+    }
+
+    isCcw(v0, v1, v2) {
+        return (v1.x - v0.x) * (v2.y - v0.y) - (v1.y - v0.y) * (v2.x - v0.x) >= 0;
     }
 
     drawScanLine(p1, p2){

@@ -1,58 +1,57 @@
 class Objects{
 
     static getCube(){
-        let cube = new Object("cube", 8);
+        let cube = new Object("cube");
         let vertices = [];
         vertices[0] = new Vector3(-1, 1, 1);
         vertices[1] = new Vector3(1, 1, 1);
         vertices[2] = new Vector3(-1, -1, 1);
         vertices[3] = new Vector3(1, -1, 1);
+
         vertices[4] = new Vector3(-1, 1, -1);
         vertices[5] = new Vector3(1, 1, -1);
         vertices[6] = new Vector3(1, -1, -1);
         vertices[7] = new Vector3(-1, -1, -1);
         cube.setVertices(vertices);
-
         let indices = [];
-        indices = indices.concat(0, 1, 2);
+        // 正前面
+        indices = indices.concat(2, 1, 0);
         indices = indices.concat(1, 2, 3);
 
+        // 左侧边
         indices = indices.concat(1, 3, 6);
-        indices = indices.concat(1, 5, 6);
+        indices = indices.concat(6, 5, 1);
 
+        // 上边
         indices = indices.concat(0, 1, 4);
-        indices = indices.concat(1, 4, 5);
+        indices = indices.concat(5, 4, 1);
 
-        indices = indices.concat(2, 3, 7);
-        indices = indices.concat(3, 6, 7);
+        // 下边
+        indices = indices.concat(7, 3, 2);
+        indices = indices.concat(7, 6, 3);
 
-        indices = indices.concat(0, 2, 7);
+        // 右侧面
+        indices = indices.concat(7, 2, 0);
         indices = indices.concat(0, 4, 7);
- 
+
+        // 背部
         indices = indices.concat(4, 5, 6);
         indices = indices.concat(4, 6, 7);
         cube.setIndices(indices);
 
         let colors = [];
-        // colors[0] = new Color(255, 0, 0, 255); //red
-        // colors[1] = new Color(0, 255, 0, 255); //green
-        // colors[2] = new Color(0, 0, 255, 255); // blue
-        // colors[3] = new Color(255, 255, 255, 255); // white
-
-        // colors[4] = new Color(255, 255, 0, 255); //red
-        // colors[5] = new Color(0, 255, 255, 255); //green
-        // colors[6] = new Color(255, 0, 255, 255); // blue
-        // colors[7] = new Color(0, 0, 0, 255); // white
 
         colors[0] = new Color(255, 0, 0, 255); //red
-        colors[1] = new Color(255, 0, 0, 255); //green
-        colors[2] = new Color(255, 0, 0, 255); // blue
-        colors[3] = new Color(255, 0, 0, 255); // white
+        colors[1] = new Color(255,  0, 0, 255); // red
 
-        colors[4] = new Color(255, 0, 0, 255); //red
-        colors[5] = new Color(255, 0, 0, 255); //green
-        colors[6] = new Color(255, 0, 0, 255); // blue
-        colors[7] = new Color(255, 0, 0, 255); // white
+        colors[2] = new Color(0, 255, 0, 255); // green
+        colors[3] = new Color(0, 255, 0, 255); // green
+
+        colors[4] = new Color(0, 0, 255, 255); //green
+        colors[5] = new Color(0, 0, 255, 255); //green
+
+        colors[6] = new Color(255, 255, 0, 255); // yellow
+        colors[7] = new Color(255, 255, 0, 255); // yellow
 
 
         cube.colors = colors;

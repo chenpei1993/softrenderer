@@ -50,6 +50,10 @@ class Object{
         this.drawMode = drawMode;
     }
 
+    getDrawMode(){
+        return this.drawMode;
+    }
+
     draw(scene, viewMatrix, projectionMatrix){
         let worldMatrix = Matrix.rotationYawPitchRoll(this.getRotation().y, this.getRotation().x, this.getRotation().z)
                     .multiply(Matrix.translation(this.getPosition().x, this.getPosition().y, this.getPosition().z));
